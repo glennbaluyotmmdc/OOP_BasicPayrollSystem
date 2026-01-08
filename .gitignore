@@ -1,0 +1,22 @@
+# NetBeans build folders
+build/
+dist/
+nbbuild/
+.nb-gradle/
+
+# NetBeans private project files (machine-specific)
+nbproject/private/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Maven / Gradle target folders (if used)
+target/
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.bak
