@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Employee;
 
 /**
  *
@@ -222,12 +223,16 @@ public class PayrollFrame extends javax.swing.JFrame {
             while ((line = br.readLine()) != null) {
                 String[] d = line.split(",",-1);
 
+                int id = Integer.parseInt(d[0]);
+                String name = d[1];
+                String email = d[2];
                 double salary = Double.parseDouble(d[3]);
                 double allowance = Double.parseDouble(d[4]);
-                double gross = salary + allowance;
+
+                Employee emp = new Employee(id, name, email, salary, allowance);
 
                 model.addRow(new Object[]{
-                    d[0], d[1], d[2], salary, allowance, gross
+                    emp.getId(), emp.getName(), emp.getEmail(), emp.getSalary(), emp.getAllowance(), emp.getGrossSalary()
                 });
             }
 
@@ -262,21 +267,26 @@ public class PayrollFrame extends javax.swing.JFrame {
                     "Salary and Allowance must be numbers");
             return;
         }
+        
+        Employee emp = new Employee(newId, name, email, salary, allowance);
+        
+        
+        
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(CSV, true))) {
             bw.newLine();
-            bw.write(newId + "," +
-                     name + "," +
-                     email + "," +
-                     salary + "," +
-                     allowance);
+            bw.write(emp.getId() + "," +
+                     emp.getName() + "," +
+                     emp.getEmail() + "," +
+                     emp.getSalary() + "," +
+                     emp.getAllowance());
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "CSV Save Error:\n" + e.getMessage());
             return;
         }
 
-        model.addRow(new Object[]{
-            newId, name, email, salary, allowance
-        });
+                model.addRow(new Object[]{
+                    emp.getId(), emp.getName(), emp.getEmail(), emp.getSalary(), emp.getAllowance(), emp.getGrossSalary()
+                });
     }
 
     
