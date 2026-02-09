@@ -14,6 +14,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Employee;
 
+import model.HR;
+import model.HRService;
+
+
+
+
 /**
  *
  * @author glennbaluyot
@@ -229,10 +235,16 @@ public class PayrollFrame extends javax.swing.JFrame {
                 double salary = Double.parseDouble(d[3]);
                 double allowance = Double.parseDouble(d[4]);
 
-                Employee emp = new Employee(id, name, email, salary, allowance);
+
+                HR hr = new HR(id, name, email, salary, allowance);
+                HRService service = new HRService();
+                
+                service.updateSalary(hr, 1000000);
+                service.updateSalary(hr, 50000, true);
+      
 
                 model.addRow(new Object[]{
-                    emp.getId(), emp.getName(), emp.getEmail(), emp.getSalary(), emp.getAllowance(), emp.getGrossSalary()
+                    hr.getId(), hr.getName(), hr.getEmail(), hr.getSalary(), hr.getAllowance(), hr.getGrossSalary()
                 });
             }
 
@@ -268,10 +280,9 @@ public class PayrollFrame extends javax.swing.JFrame {
             return;
         }
         
-        Employee emp = new Employee(newId, name, email, salary, allowance);
-        
-        
-        
+        //ProbationaryEmployee emp = new ProbationaryEmployee(newId, name, email, salary, allowance, 10, 20);
+       
+       /* 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(CSV, true))) {
             bw.newLine();
             bw.write(emp.getId() + "," +
@@ -283,10 +294,12 @@ public class PayrollFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "CSV Save Error:\n" + e.getMessage());
             return;
         }
-
+       
                 model.addRow(new Object[]{
                     emp.getId(), emp.getName(), emp.getEmail(), emp.getSalary(), emp.getAllowance(), emp.getGrossSalary()
                 });
+
+ */
     }
 
     

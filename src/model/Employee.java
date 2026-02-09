@@ -8,12 +8,12 @@ package model;
  *
  * @author glennbaluyot
  */
-public class Employee {
+public class Employee implements Payables, EmployeeOperations {
     private int id;
     private String name;
     private String email;
-    private double salary;
-    private double allowance;
+    protected double salary;
+    protected double allowance;
 
     public Employee() {
     }
@@ -66,10 +66,17 @@ public class Employee {
     public void setAllowance(double allowance) {
         this.allowance = allowance;
     }
-    
+
+    @Override
     public double getGrossSalary()
     {
         return salary + allowance;
     }
     
+    @Override
+    public void viewEmployeeRecords()
+    {
+        //Logic is here
+    }
+
 }
