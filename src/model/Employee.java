@@ -1,29 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author glennbaluyot
- */
-public class Employee implements Payables, EmployeeOperations {
+public abstract class Employee implements Payables {
     private int id;
     private String name;
     private String email;
-    protected double salary;
-    protected double allowance;
+    private double salary;
+    private double allowance;
+    private EmployeeType type;
 
-    public Employee() {
-    }
-
-    public Employee(int id, String name, String email, double salary, double allowance) {
+    protected Employee(int id, String name, String email, double salary, double allowance, EmployeeType type) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.salary = salary;
         this.allowance = allowance;
+        this.type = type;
     }
 
     public int getId() {
@@ -47,8 +38,7 @@ public class Employee implements Payables, EmployeeOperations {
     }
 
     public void setEmail(String email) {
-        
-        this.email = "lr." + email;
+        this.email = email;
     }
 
     public double getSalary() {
@@ -67,16 +57,16 @@ public class Employee implements Payables, EmployeeOperations {
         this.allowance = allowance;
     }
 
-    @Override
-    public double getGrossSalary()
-    {
-        return salary + allowance;
-    }
-    
-    @Override
-    public void viewEmployeeRecords()
-    {
-        //Logic is here
+    public EmployeeType getType() {
+        return type;
     }
 
+    public void setType(EmployeeType type) {
+        this.type = type;
+    }
+
+    @Override
+    public double getGrossSalary() {
+        return salary + allowance;
+    }
 }

@@ -1,8 +1,6 @@
-id,name,email,salary,allowance
-1,Juan Dela Cruz,juan@email.com,30000,5000
-2,Maria Santos,maria@email.com,50000,2000
-3,Test,Test@email.com,10000.0,1000.0
-4,Test2,Test2@email.com,15000.0,1500.0
-5,Test3,Test3@email.com,20000.0,2000.0
-6,Test4,Test4@email.com,32000.0,1000.0
-7,Test5,Test5@email.com,100000.0,10000.0
+id,name,email,salary,allowance,type
+1,Juan Dela Cruz,juan@email.com,30000.0,5000.0,REGULAR
+2,Maria Santos,maria@email.com,50000.0,2000.0,REGULAR
+3,Test,Test@email.com,10000.0,1000.0,REGULAR
+4,Test2,Test2@email.com,15000.0,1500.0,REGULAR
+5,Test35,Test3@email.com,20000.0,2000.0,REGULAR
